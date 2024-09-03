@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Prediction</title>
+    
+    <!-- Load static template tag -->
+    {% load static %}
+
+    <!-- Link to a CSS file in the static folder -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Suggested Vertical</h1>
+        
+        {% if prediction %}
+            <h2>Predicted Category: {{ prediction }}</h2>
+        {% elif error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <table class="form-table">
+                {% for col in columns %}
+                <tr>
+                    <td><label for="{{ col }}">{{ col }}:</label></td>
+                    <td><input type="text" name="{{ col }}" id="{{ col }}" required></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <!-- Example of loading a JavaScript file from the static folder -->
+    <script src="{% static 'predictor/scripts.js' %}"></script>
+</body>
+</html>
