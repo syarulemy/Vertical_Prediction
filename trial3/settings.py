@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1158$x21l1d!9#c5(2(#)#z4=55wn(pbl3_yeq5t8f!y*$v!l+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','vertical-prediction.onrender.com']
 
 
 # Application definition
